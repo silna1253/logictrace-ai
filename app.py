@@ -7,11 +7,13 @@ st.set_page_config(page_title="LogicTrace AI", page_icon="💻")
 st.title("💻 LogicTrace AI")
 st.write("Welcome! This tool helps students find hidden logic mistakes in their code.")
 
-# 2. Creating a Sidebar on the left for the secret AI Key
-with st.sidebar:
-    st.header("Setup")
-    api_key = st.text_input("Enter your Gemini API Key:", type="password")
-    st.write("Need a key? Ask your teacher or get a free one online.")
+# 2. BACKEND API KEY INTEGRATION (Completely replaces the sidebar text box!)
+# This looks for the key in your local secrets file or your live deployment console.
+if "GEMINI_API_KEY" in st.secrets:
+    api_key = st.secrets["GEMINI_API_KEY"]
+else:
+    st.error("⚠️ Backend Configuration Error: 'GEMINI_API_KEY' is missing from Streamlit Secrets!")
+    st.stop()
 
 # 3. Creating the main input boxes for the student
 language = st.selectbox("Select Programming Language:", ["Python", "JavaScript", "C++", "Java"])
@@ -28,9 +30,7 @@ source_code = st.text_area(
 
 # 4. What happens when the user clicks the blue button
 if st.button("Find the Logic Mistake", type="primary"):
-    if not api_key:
-        st.error("Please enter your Gemini API Key in the sidebar first!")
-    elif not source_code or not expected_behavior:
+    if not source_code or not expected_behavior:
         st.warning("Please fill out both text boxes!")
     else:
         # Show a loading animation while the AI thinks
