@@ -17,7 +17,7 @@ https://logictrace-ai-t6nuwkofi69hadgwmadn8m.streamlit.app/
 - Google GenAI SDK
 
 ## Architecture
-[diagram]
+![Architecture Diagram](neww.png)
 
 ## Setup
 pip install -r requirements.txt
