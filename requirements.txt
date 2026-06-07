@@ -1,3 +1,2 @@
 streamlit
 google-generativeai
-google.api_core.exceptions
