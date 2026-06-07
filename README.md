@@ -4,7 +4,7 @@ An AI-powered educational debugging assistant designed to help beginner programm
 Traditional compilers and IDEs excel at catching syntax issues but leave students completely stranded when code runs but produces incorrect results . LogicTrace AI bridges this gap by using a Large Language Model to serve as a virtual programming tutor that prioritizes conceptual learning over lazy copy-pasting .
 
 ## 🔗 Live Demo
-👉 [Launch LogicTrace AI Web App](https://logictrace-ai-t6nuwkofi69hadgwmadn8m.streamlit.app/)
+👉 [LogicTrace AI Web App](https://logictrace-ai-t6nuwkofi69hadgwmadn8m.streamlit.app/)
 
 
 ## 💡 Features
@@ -44,7 +44,7 @@ Install the required software packages using your terminal:
 ```bash
 pip install -r requirements.txt
 
-**### 2. Configure Your Local Backend Secrets**
+### 2. Configure Your Local Backend Secrets
 To run the application locally without exposing credentials on the frontend user interface, create a hidden configuration folder named `.streamlit` in your project root. Inside it, create a file named `secrets.toml` and add your secret token:
 ```toml
 GEMINI_API_KEY = "your_actual_gemini_api_key_here"
