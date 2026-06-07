@@ -33,24 +33,18 @@ Below is the design layout and systemic data flow of the application tracking in
 
 ![Architecture Diagram](neww.png)
 
-### Core System Design Trade-offs 
-
-#### 1. LLM Inference vs. Static AST Tracking 
-* **Decision:** Leveraged an LLM via the Gemini API rather than writing programmatic AST analyzers or deterministic rule-based compilers .
-* **Reasoning:** AST parsers evaluate syntax structure but cannot comprehend a developer's underlying intent . If a beginner types `<` instead of `<=`, an AST parser sees perfectly valid code; Gemini flags the logical discrepancy against the user's declared objective .
-
-#### 2. Streamlit Web UI vs. Full-Stack JavaScript (React/Node.js) 
-* **Decision:** Deployed on Streamlit for accelerated web prototyping .
-* **Reasoning:** In a short-window hackathon challenge, development speed and functional robustness are critical . Streamlit eliminates complex state-management boilerplate, allowing 100% of the engineering focus to be spent on robust prompt pipelines and secure backend validation .
-
----
-
 ## ⚙️ Setup & Local Installation 
 
 ### Prerequisites
-Make sure you have Python 3.9+ installed on your computer.
+1. Make sure you have Python 3.9+ installed on your computer.
+2. **Gemini API Key:** You will need a free API key from Google AI Studio to run the backend engine .
 
 ### 1. Install Dependencies
 Install the required software packages using your terminal:
 ```bash
 pip install -r requirements.txt
+
+**### 2. Configure Your Local Backend Secrets**
+To run the application locally without exposing credentials on the frontend user interface, create a hidden configuration folder named `.streamlit` in your project root. Inside it, create a file named `secrets.toml` and add your secret token:
+```toml
+GEMINI_API_KEY = "your_actual_gemini_api_key_here"
