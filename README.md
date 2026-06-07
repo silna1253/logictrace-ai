@@ -4,7 +4,7 @@ An AI-powered educational debugging assistant designed to help beginner programm
 Traditional compilers and IDEs excel at catching syntax issues but leave students completely stranded when code runs but produces incorrect results . LogicTrace AI bridges this gap by using a Large Language Model to serve as a virtual programming tutor that prioritizes conceptual learning over lazy copy-pasting .
 
 ## 🔗 Live Demo
-👉 [LogicTrace AI Web App](https://logictrace-ai-t6nuwkofi69hadgwmadn8m.streamlit.app/)
+👉 [LogicTrace AI Web App](https://logictrace-ai-9zwrwygdtss9yicymvvf2b.streamlit.app/)
 
 
 ## 💡 Features
