@@ -1,5 +1,6 @@
 import streamlit as st
 import google.generativeai as genai
+import google.api_core.exceptions
 
 # 1. This sets up the Title of our Web Page
 st.set_page_config(page_title="LogicTrace AI", page_icon="💻")
@@ -63,13 +64,21 @@ if st.button("Find the Logic Mistake", type="primary"):
                 Provide the corrected code block and a quick, encouraging tip to remember for next time!
                 """
                 
-                # Ask the AI for the answer
-                response = model.generate_content(prompt)
+                # --- SAFE API CALL WITH ERROR HANDLING ---
+                try:
+                    # Ask the AI for the answer
+                    response = model.generate_content(prompt)
+                    
+                    # Show the answer on the website if successful
+                    st.success("Done!")
+                    st.markdown("---")
+                    st.markdown(response.text)
+                    
+                except google.api_core.exceptions.ResourceExhausted:
+                    # Specific handler for the 429 quota error
+                    st.error("⚠️ **Rate Limit Reached (429):** The free-tier API limit is 5 requests per minute. Please wait 60 seconds and click the button again!")
                 
-                # Show the answer on the website
-                st.success("Done!")
-                st.markdown("---")
-                st.markdown(response.text)
-                
-            except Exception as e:
-                st.error(f"Something went wrong: {str(e)}")
+            except Exception as api_error:
+                    # General catch for other runtime API connection anomalies
+                    st.error(f"API Connection Error: {str(api_error)}")
+                # ----------------------------------------
