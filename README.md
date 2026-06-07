@@ -48,3 +48,7 @@ pip install -r requirements.txt
 To run the application locally without exposing credentials on the frontend user interface, create a hidden configuration folder named `.streamlit` in your project root. Inside it, create a file named `secrets.toml` and add your secret token:
 ```toml
 GEMINI_API_KEY = "your_actual_gemini_api_key_here"
+### 3. Boot Up the Web Server
+Launch your local instance of the application using Streamlit:
+```bash
+streamlit run app.py
